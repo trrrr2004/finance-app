@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Финансовый калькулятор организации</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>Финансовый калькулятор организации</h1>
+    <p class="intro">Учебное приложение: введите выручку и затраты в рублях, чтобы получить прибыль и рентабельность продаж. Данные никуда не отправляются.</p>
+
+    <form id="calcForm" class="panel" novalidate>
+      <div class="field">
+        <label for="revenue">Выручка, ₽</label>
+        <input id="revenue" name="revenue" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 500 000">
+        <p class="hint">Сумма продаж за период.</p>
+        <p class="error" id="revenueError" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="variable">Переменные затраты, ₽</label>
+        <input id="variable" name="variable" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 300 000">
+        <p class="hint">Затраты, которые меняются вместе с объёмом продаж (материалы, комиссии).</p>
+        <p class="error" id="variableError" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="fixed">Постоянные затраты, ₽</label>
+        <input id="fixed" name="fixed" type="text" inputmode="decimal" autocomplete="off" placeholder="Например, 120 000">
+        <p class="hint">Затраты, которые не зависят от объёма продаж (аренда, зарплата по окладу).</p>
+        <p class="error" id="fixedError" role="alert"></p>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn">Рассчитать</button>
+        <button type="button" class="btn btn-secondary" id="resetBtn">Сбросить</button>
+      </div>
+    </form>
+
+    <section class="panel results" id="results" aria-live="polite" hidden>
+      <h2>Результат</h2>
+      <dl>
+        <div class="row">
+          <dt>Прибыль</dt>
+          <dd id="profitValue">—</dd>
+        </div>
+        <div class="row">
+          <dt>Рентабельность продаж</dt>
+          <dd id="marginValue">—</dd>
+        </div>
+      </dl>
+      <p class="loss" id="lossMsg" hidden>Убыток</p>
+      <p class="explain">Прибыль = выручка − переменные затраты − постоянные затраты.</p>
+      <p class="explain">Рентабельность продаж показывает долю прибыли в выручке.</p>
+
+      <h3>Выручка и затраты</h3>
+      <div id="chart" class="chart" role="img" aria-label="Столбчатая диаграмма выручки и суммарных затрат"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
